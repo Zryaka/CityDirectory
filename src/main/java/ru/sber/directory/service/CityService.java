@@ -1,7 +1,7 @@
-package main.java.ru.sber.directory.service;
+package ru.sber.directory.service;
 
-import main.java.ru.sber.directory.dao.CityDao;
-import main.java.ru.sber.directory.models.City;
+import ru.sber.directory.dao.CityDao;
+import ru.sber.directory.models.City;
 
 import java.io.IOException;
 import java.util.*;

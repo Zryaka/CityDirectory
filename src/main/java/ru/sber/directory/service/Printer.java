@@ -1,7 +1,7 @@
-package main.java.ru.sber.directory.service;
+package ru.sber.directory.service;
 
 import java.util.List;
-import java.util.Map;
+
 
 public class Printer {
 

@@ -1,7 +1,7 @@
 package ru.sber.directory;
 
-import main.java.ru.sber.directory.models.City;
-import main.java.ru.sber.directory.service.CityService;
+import ru.sber.directory.models.City;
+import ru.sber.directory.service.CityService;
 import org.junit.Assert;
 import org.junit.Test;
 

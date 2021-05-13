@@ -1,6 +1,6 @@
-package main.java.ru.sber.directory.dao;
+package ru.sber.directory.dao;
 
-import main.java.ru.sber.directory.models.City;
+import ru.sber.directory.models.City;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,12 +24,12 @@ public class CityDao {
                 while (scanner.hasNext()) {
                     City city = new City();
                     String nextLine = scanner.nextLine();
-                    String[] Data = nextLine.split(";");
-                    city.setName(Data[1]);
-                    city.setRegion(Data[2]);
-                    city.setDistrict(Data[3]);
-                    city.setPopulation(Integer.parseInt(Data[4]));
-                    city.setFoundation(Integer.parseInt(Data[5]));
+                    String[] data = nextLine.split(";");
+                    city.setName(data[1]);
+                    city.setRegion(data[2]);
+                    city.setDistrict(data[3]);
+                    city.setPopulation(Integer.parseInt(data[4]));
+                    city.setFoundation(Integer.parseInt(data[5]));
 
                     cities.add(city);
                 }

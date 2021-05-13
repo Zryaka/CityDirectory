@@ -1,7 +1,7 @@
 package ru.sber.directory;
 
-import main.java.ru.sber.directory.dao.CityDao;
-import main.java.ru.sber.directory.models.City;
+import ru.sber.directory.dao.CityDao;
+import ru.sber.directory.models.City;
 import org.junit.Assert;
 import org.junit.Test;
 

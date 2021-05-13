@@ -1,4 +1,4 @@
-package main.java.ru.sber.directory.models;
+package ru.sber.directory.models;
 
 public class City {
 
@@ -14,15 +14,6 @@ public class City {
 
     public City() {
     }
-
-    public City(String name, String region, String district, int population, int foundation) {
-        this.name = name;
-        this.region = region;
-        this.district = district;
-        this.population = population;
-        this.foundation = foundation;
-    }
-
 
     public int getFoundation() {
         return foundation;
