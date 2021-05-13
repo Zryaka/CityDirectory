@@ -1,40 +1,39 @@
+package main.java.ru.sber.directory.service;
+
+import main.java.ru.sber.directory.dao.CityDao;
+import main.java.ru.sber.directory.models.City;
+
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CityService {
 
     private CityDao cityDao;
 
+    Printer print = new Printer();
 
-
-    public CityService(){
+    public CityService() {
         cityDao = new CityDao();
     }
 
-    public void readCity(){
-        cityDao.readCity().stream()
-                .forEach(System.out::println);
-    }
-
-    public void SortName() {
-        cityDao.readCity().stream().sorted(Comparator.comparing(City::getName))
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
-    }
-
-    public void SortNameAndDistrict() {
-
-        cityDao.readCity().stream().sorted(Comparator.comparing(City::getDistrict)
-                .thenComparing(City::getName)).collect(Collectors.toList())
-                .forEach(System.out::println);
-
+    public List<City> readCity() {
+        return cityDao.readCity();
 
     }
 
-    public void populationSize() {
+    public List<City> sortName() {
+        return cityDao.readCity().stream().sorted(Comparator.comparing(City::getName)).collect(Collectors.toList());
+
+    }
+
+    public List<City> sortNameAndDistrict() {
+
+        return cityDao.readCity().stream().sorted(Comparator.comparing(City::getDistrict)
+                .thenComparing(City::getName)).collect(Collectors.toList());
+    }
+
+    public String populationSize() {
 
         City[] cityPop = cityDao.readCity().toArray(new City[0]);
 
@@ -46,27 +45,25 @@ public class CityService {
                 index = i;
             }
         }
-        System.out.println("[" + index + "]" + " = " + max);
+        return "[" + index + "]" + " = " + max;
 
     }
 
-    public void sizeOfDistrict() {
+    public Map<String,Integer> sizeOfDistrict() {
 
-
-
+        Map<String,Integer> cities = new HashMap<>();
 
         Map<String, List<City>> district = cityDao.readCity().stream().collect(
                 Collectors.groupingBy(City::getDistrict));
 
         for (Map.Entry<String, List<City>> item : district.entrySet()) {
 
-            System.out.println(item.getKey() + " - " + item.getValue().size());
-
-
+            cities.put(item.getKey(),item.getValue().size());
         }
+        return cities;
     }
 
-    public void startSystem () throws IOException {
+    public void startSystem() throws IOException {
 
         char choice;
         char ignore;
@@ -89,19 +86,19 @@ public class CityService {
         System.out.println("\n");
         switch (choice) {
             case '1':
-                readCity();
+                print.printer(readCity());
                 break;
             case '2':
-                SortName();
+                print.printer(sortName());
                 break;
             case '3':
-                SortNameAndDistrict();
+                print.printer(sortNameAndDistrict());
                 break;
             case '4':
-                populationSize();
+                print.printer(populationSize());
                 break;
             case '5':
-                sizeOfDistrict();
+                print.printer(sizeOfDistrict());
                 break;
 
         }
